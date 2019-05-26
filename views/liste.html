@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
-<link rel="stylesheet" type="text/css" href="liste.css">
-<link rel="stylesheet" type="text/css" href="footer.css">
+<title>Utilisateur connecté</title>
+<link rel="stylesheet" type="text/css" href="css/liste.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
 <script src="client.js" defer></script>
 </head>
 <body id="dame">
@@ -11,7 +11,7 @@
 	<nav class="menu">
 		<div id="logo_recherche">
 			<img src="https://cdn.glitch.com/92de824e-f10e-43a2-b6ef-2296b49d050c%2Fimage016.jpg?1558014603781">
-			<form method="get" action="exercices.php">
+			<form method="get" action="">
 				<input type="search" name="q" placeholder="Rechercher un Membre">
 				<input type="submit" value="OK">
 			</form>
@@ -24,7 +24,7 @@
 				<a href="/userConnecter">Membres connectés</a>
 			</li>
 			<li>
-				<a href="/userDeconnecter">Deconnexion</a>
+				<a id="deconne" href="/userDeconnecter">Deconnexion</a>
 			</li>
 		</ul>
 	</nav>
