@@ -49,7 +49,11 @@ class User
   // inviter un adversaire a un défi
   invite(adversaire)
   { console.log('dans invite');
-  console.log(adversaire);
+    console.log(adversaire);
+    if(adversaire == null)
+    {
+      return null;
+    }
     if(adversaire !== this && !this.jeux[adversaire.pseudo])
     {
       return true;
@@ -59,7 +63,11 @@ class User
 
   lancerDefi(adversaire)
   {
-    if(!this.jeux[adversaire.pseudo]);//adversaire.state === this.state && this.state === 'AVAILABLE')
+    if(adversaire == null)
+    {
+      return null;
+    }
+    else if(!this.jeux[adversaire.pseudo])//adversaire.state === this.state && this.state === 'AVAILABLE')
     {
       this.state = 'PLAYING';
       adversaire.state = 'PLAYING';
@@ -68,19 +76,31 @@ class User
       adversaire.jeux[this.pseudo] = dame;
       return dame;
     }
-    return null;
+    else
+    {
+      return null;
+    }
+    
   }
   
   // on quite le jeu
   quiter(adversaire)
   {
-    if(this.state === 'PLAYING')
+    if(adversaire == null)
+    {
+      return false;
+    }
+    else if(this.state === 'PLAYING')
     {
       //console.log('jeu '+this.jeux[adversaire.pseudo])
       this.jeux[adversaire.pseudo].quiter();
       return true;
     }
-    return false;
+    else
+    {
+      return false;
+    }
+    
   }
 
   // description
