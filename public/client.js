@@ -77,7 +77,7 @@ ws.addEventListener('open', function(e)
       else
       {
         let listUser = document.querySelector('#listUser');
-        listUser.innerHTML = 'Aucune personne connecter';
+        listUser.innerHTML = 'Aucune personne connectée';
       }
       //console.log('liste= '+e.data);
     }
@@ -123,7 +123,7 @@ ws.addEventListener('open', function(e)
     }
     else if(msg['type'] === 'defiAccepter')
     {
-      console.log('défi accepter par '+ msg['message']);
+      console.log('défi accepté par '+ msg['message']);
       console.log('vous jouer avec ' + msg['message']);
       let testTable = document.querySelector('#listDefi');
       let endefi = document.querySelector('#listEnDefi');
@@ -141,7 +141,7 @@ ws.addEventListener('open', function(e)
         let bouton = tdBouton.appendChild(document.createElement('button'));
         tdUser.textContent = msg['message'];
         tru.id = 'quiter_'+msg['message'];
-        bouton.textContent = 'Quitez';
+        bouton.textContent = 'Quiter';
         endefi.appendChild(tru);
       }
       else
@@ -153,7 +153,7 @@ ws.addEventListener('open', function(e)
         let tdUser = tru.appendChild(document.createElement('td'));
         let tdBouton = tru.appendChild(document.createElement('td'));
         let bouton = tdBouton.appendChild(document.createElement('button'));
-        th.textContent = 'Vou jouer avec:';
+        th.textContent = 'Vous jouer avec:';
         tru.id = 'quiter_'+msg['message'];
         tdUser.textContent = msg['message'];
         bouton.textContent = 'Quitez';
@@ -173,7 +173,7 @@ ws.addEventListener('open', function(e)
     }
     else if(msg['type'] === 'defiRefuser')
     {
-      console.log('défi refuser par' + msg['message']) ;
+      console.log('défi refusé par' + msg['message']) ;
       window.alert(msg['message'] + " a refusé votre défi \n \t \t(｡-_-｡)");
     }
     else if(msg['type'] === 'enDefi')
@@ -193,7 +193,7 @@ ws.addEventListener('open', function(e)
         let trh = table.appendChild(document.createElement('tr'));
         let th = trh.appendChild(document.createElement('th'));
         //let tru = table.appendChild(document.createElement('tr'));
-        th.textContent = 'Son en défi:';
+        th.textContent = 'Sont en défi:';
         table.id = 'enDefi';
         table.appendChild(sonEnDefi(msg['message1'], msg['message2']));
         let listUser = document.querySelector('#endefi');
@@ -214,18 +214,18 @@ ws.addEventListener('open', function(e)
     }
     else if(msg['type'] === 'aquiter')
     {
-      console.log(msg['message'] + ' a quiter le défi');
-      window.alert(msg['message'] + ' a quiter le défi \n Vous êtes déclaré gagnat \n \t \t(｡-_-｡) ');
+      console.log(msg['message'] + ' a quitté le défi');
+      window.alert(msg['message'] + ' a quitté le défi \n Vous êtes déclaré gagnat \n \t \t(｡-_-｡) ');
     }
     else if(msg['type'] === 'pasEnDefi')
     {
-      console.log('vous n etês pas en defi avec ' + msg['message']);
-      window.alert('vous n etês pas en defi avec ' + msg['message']);
+      console.log('vous n êtes pas en defi avec ' + msg['message']);
+      window.alert('vous n êtes pas en defi avec ' + msg['message']);
     }
     else if(msg['type'] === 'dejaEnDefi')
     {
-      console.log('vous n etês pas en defi avec ' + msg['message']);
-      window.alert('vous etês déjà en defi avec ' + msg['message']);
+      console.log('vous n êtes pas en defi avec ' + msg['message']);
+      window.alert('vous êtes déjà en defi avec ' + msg['message']);
     }
     else if(msg['type'] === 'defiTerminer')
     {

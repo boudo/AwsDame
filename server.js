@@ -108,14 +108,15 @@ wsserver.on('connection', function(wsconn, req) {
       else if(recu['type'] == 'defi')
       {
         console.log('défi réçu pour '+ recu['message']);
-        if(listeDesUserConnecter[myuser.pseudo].invite(listeDesUserConnecter[recu['message']]))
+        let val = listeDesUserConnecter[myuser.pseudo].invite(listeDesUserConnecter[recu['message']]);
+        if(val == true)
         {
           console.log('envoi du défi au concerner');
           send(listeDesUserConnecter[recu['message']].wsconns, 'client',{ type: 'defi',
                                                                               message: myuser.pseudo
                                                                         });
         }
-        else
+        else if(val == false)
         {
             send(listeDesUserConnecter[myuser.pseudo].wsconns, 'client',{ type: 'dejaEnDefi',
                                                                               message: recu['message']
@@ -459,6 +460,15 @@ app.get('/changePassword', function(req, res) {
   if(req.session.pseudo)
   {
     res.render('changePassword.html', {pseudo: req.session.pseudo, profil: req.session});
+  }
+  else{
+    res.render('connexion.html');
+  }
+});
+app.get('/apropos', function(req, res) {
+  if(req.session.pseudo)
+  {
+    res.render('lessons/slideAws/index.html', {pseudo: req.session.pseudo, profil: req.session});
   }
   else{
     res.render('connexion.html');
